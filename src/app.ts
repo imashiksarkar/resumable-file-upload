@@ -1,9 +1,12 @@
 import express, { Request, Response } from "express"
 import cors from "cors"
+import dotenv from "dotenv"
 import fs from "node:fs/promises"
 import getIpAddress from "./utils/getIpAddress"
 
-const PORT = process.env.PORT || 5001
+dotenv.config()
+const PORT = process.env.PORT || 5000
+
 
 const app = express()
 
