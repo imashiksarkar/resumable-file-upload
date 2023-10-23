@@ -5,14 +5,13 @@ import fs from "node:fs/promises"
 import getIpAddress from "./utils/getIpAddress"
 
 dotenv.config()
-const PORT = process.env.PORT || 5000
-
+const PORT = process.env.PORT || 5001
 
 const app = express()
 
 app.use(cors())
 app.use(express.json())
-app.use(express.raw({ type: "*/*", limit: "50mb" }))
+app.use(express.raw({ type: "*/*", limit: process.env.FILE_CHUNK_LIMIT }))
 
 app.get("/", (_req: Request, res: Response) => {
   res.status(200).json("Hello")
